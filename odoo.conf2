@@ -1,0 +1,19 @@
+[options]
+addons_path = 
+            /usr/lib/python3/dist-packages/odoo/addons,
+            /mnt/extra-addons,
+            /mnt/extra-addons/l10n-brazil,
+            /mnt/extra-addons/bank-payment,
+            /mnt/extra-addons/account-payment,
+            /mnt/extra-addons/web,
+            /mnt/extra-addons/mis-builder,
+            /mnt/extra-addons/reporting-engine,
+            /mnt/extra-addons/server-ux,
+data_dir = /var/lib/odoo
+db_host = db
+db_port = 5432
+db_user = odoo
+db_password = odoo
+xmlrpc_port = 8069
+logfile = /var/log/odoo/odoo.log
+admin_passwd = thmpv-77d6f

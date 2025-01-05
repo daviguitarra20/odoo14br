@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  web:
+    image: adoo3.8:latest
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"   # Mapeando a porta 8069 do Odoo para a porta 8099 do host
+    #entrypoint:
+     # - odoo
+      #- -i
+      #- base
+      #- -d
+      #- demo_odoo_database
+    command: odoo -c /etc/odoo/odoo.conf && tail -f /var/log/odoo/odoo.log  # comando iniciação o odoo com o odoo.conf e guarda os logs
+    volumes:
+      #- ./odoo-data/filestore:/var/lib/odoo  # Monta o diretório para os arquivos de dados do Odoo
+      #- ./odoo-data/config:/etc/odoo         # Monta a configuração personalizada do Odoo
+      -  ./extra-addons:/mnt/extra-addons     # pasta dos modulos extras  
+      -  ./odoo-data/odoo-logs/odoo.log:/var/log/odoo/odoo.log   # pasta dos logs
+    networks:
+      - webnet
+
+  db:
+    container_name: db
+    image: postgres:13
+    ports:
+      - "5432:5432"  # Mapeando a porta padrão 5432 do PostgreSQL
+    environment:
+      - POSTGRES_DB=postgres  # Nome do banco de dados
+      - POSTGRES_PASSWORD=odoo           # Senha do banco
+      - POSTGRES_USER=odoo               # Usuário do banco
+      - PGDATA=/var/lib/postgresql/data/pgdata  # Definir a variável de ambiente PGDATA
+    volumes:
+      - ./odoo-data/db_data/postgresql:/var/lib/postgresql/data  # Volume para persistência do banco de dados
+    networks:
+      - webnet
+
+networks:
+  webnet:
