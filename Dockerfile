@@ -1,5 +1,7 @@
 FROM python:3.8-slim-bullseye
 
+USER root
+
 # Atualizando a instrução de manutenção para usar LABEL
 LABEL maintainer="Odoo S.A. <info@odoo.com>"
 
@@ -57,6 +59,11 @@ RUN npm install -g rtlcss
 
 # Instalar dependências do Python, incluindo psycopg2-binary para PostgreSQL
 RUN pip install --no-cache-dir psycopg2-binary
+COPY ./extra-addons /usr/lib/python3/dist-packages/odoo/extra-addons
+
+WORKDIR /usr/lib/python3/dist-packages/odoo/extra-addons
+RUN pip3 install --upgrade pip wheel setuptools \
+    && pip3 install -r ./pip-requirements.txt
 
 # Instalar Odoo
 ENV ODOO_VERSION=14.0
@@ -89,7 +96,7 @@ ENV ODOO_RC=/etc/odoo/odoo.conf
 COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
 # Definir usuário padrão ao rodar o container
-USER odoo
+#USER odoo
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]

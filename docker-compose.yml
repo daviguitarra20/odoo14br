@@ -1,23 +1,16 @@
 version: '3.4'
 services:
   web:
-    image: adoo3.8:latest
+    image: odoo14-oca:latest
     depends_on:
       - db
     ports:
       - "8069:8069"   # Mapeando a porta 8069 do Odoo para a porta 8099 do host
-    #entrypoint:
-     # - odoo
-      #- -i
-      #- base
-      #- -d
-      #- demo_odoo_database
     command: odoo -c /etc/odoo/odoo.conf && tail -f /var/log/odoo/odoo.log  # comando iniciação o odoo com o odoo.conf e guarda os logs
     volumes:
-      #- ./odoo-data/filestore:/var/lib/odoo  # Monta o diretório para os arquivos de dados do Odoo
-      #- ./odoo-data/config:/etc/odoo         # Monta a configuração personalizada do Odoo
-      -  ./extra-addons:/mnt/extra-addons     # pasta dos modulos extras  
-      -  ./odoo-data/odoo-logs/odoo.log:/var/log/odoo/odoo.log   # pasta dos logs
+      - ./extra-addons:/mnt/extra-addons     # pasta dos módulos extras  
+      - ./odoo-data/odoo-logs/odoo.log:/var/log/odoo/odoo.log   # pasta dos logs
+      - ./odoo.conf:/etc/odoo/odoo.conf      # Monta o arquivo odoo.conf da raiz do projeto para o contêiner
     networks:
       - webnet
 
