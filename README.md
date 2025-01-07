@@ -32,7 +32,7 @@ git clone -b 14.0 --single-branch --depth=1  https://github.com/OCA/helpdesk.git
 
 Para criar a imagen docker use :
 
-docker build -t  odoo15d .
+docker build -t  NOME_DA_IMAGEN .
 
 # Para adicionar um submodulo com a branch desejada:
 git submodule add -b 14.0 URL-do-repositorio caminho/opcional
