@@ -1,8 +1,8 @@
-## ODOO 14 ##
+# ODOO 14
 
 git clone -b 14.0 --single-branch --depth=1 https://github.com/odoo/odoo.git
 
-## MODULOS PARA SETEM BAIXADOS : ##
+### MODULOS OCA LOCALIZAÇÂO FISCAL BRASILEIRA : 
 
 git clone -b 14.0 --single-branch --depth=1  https://github.com/OCA/reporting-engine.git
 
