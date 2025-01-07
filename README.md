@@ -1,4 +1,4 @@
-### ODOO 14 ###
+## ODOO 14 ##
 
 git clone -b 14.0 --single-branch --depth=1 https://github.com/odoo/odoo.git
 
@@ -30,13 +30,13 @@ git clone -b 14.0 --single-branch --depth=1  https://github.com/OCA/l10n-brazil.
 git clone -b 14.0 --single-branch --depth=1  https://github.com/OCA/helpdesk.git
 
 
-Para criar a imagen docker use :
+###  Para criar a imagen docker use :
 
 docker build -t  NOME_DA_IMAGEN .
 
-# Para adicionar um submodulo com a branch desejada:
+### Para adicionar um submodulo com a branch desejada:
 git submodule add -b 14.0 URL-do-repositorio caminho/opcional
 
 
-# Para baixar ou atualizar os extra-addons:
+### Para baixar ou atualizar os extra-addons:
 git submodule update --init --depth=1
