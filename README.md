@@ -1,4 +1,4 @@
-### INSTALAÇÂO ODOO####
+### ODOO 14 ###
 
 git clone -b 14.0 --single-branch --depth=1 https://github.com/odoo/odoo.git
 
