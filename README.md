@@ -2,7 +2,7 @@
 
 git clone -b 14.0 --single-branch --depth=1 https://github.com/odoo/odoo.git
 
-##### MODULOS PARA SETEM BAIXADOS ################
+## MODULOS PARA SETEM BAIXADOS ##
 
 git clone -b 14.0 --single-branch --depth=1  https://github.com/OCA/reporting-engine.git
 
